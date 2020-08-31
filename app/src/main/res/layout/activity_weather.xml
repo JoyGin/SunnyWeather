@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
@@ -37,18 +37,18 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:clickable="true"
         android:focusable="true"
         android:background="@color/colorPrimary">
 
         <fragment
             android:id="@+id/placeFragment"
+            android:name="com.sunnyweather.joygin.ui.place.PlaceFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.sunnyweather.joygin.ui.place.PlaceFragment"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp" />
 
     </FrameLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

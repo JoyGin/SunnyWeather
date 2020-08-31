@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.sunnyweather.joygin.MainActivity
 import com.sunnyweather.joygin.R
 import com.sunnyweather.joygin.logic.model.Place
 import com.sunnyweather.joygin.ui.weather.WeatherActivity
@@ -26,21 +24,28 @@ class PlaceAdapter(private val fragment: PlaceFragment, private val placeList: L
             val positon = holder.adapterPosition
             val place = placeList[positon]
             val activity = fragment.activity
-            if(activity is WeatherActivity){
+            if (activity is WeatherActivity){
                 activity.drawerLayout.closeDrawers()
                 activity.viewModel.locationLng = place.location.lng
                 activity.viewModel.locationLat = place.location.lat
                 activity.viewModel.placeName = place.name
                 activity.refreshWeather()
-            }else{
+            } else {
                 val intent = Intent(parent.context, WeatherActivity::class.java).apply {
                     putExtra("location_lng", place.location.lng)
                     putExtra("location_lat", place.location.lat)
                     putExtra("place_name", place.name)
                 }
                 fragment.startActivity(intent)
-                fragment.activity?.finish()
+                activity?.finish()
             }
+//            val intent = Intent(parent.context, WeatherActivity::class.java).apply {
+//                putExtra("location_lng", place.location.lng)
+//                putExtra("location_lat", place.location.lat)
+//                putExtra("place_name", place.name)
+//            }
+//            fragment.startActivity(intent)
+//            activity?.finish()
             fragment.viewModel.savePlace(place)
         }
         return holder
